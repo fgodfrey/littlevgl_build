@@ -187,9 +187,9 @@
 /*-------------------------------------------------
  * Mouse or touchpad as evdev interface (for Linux based systems)
  *------------------------------------------------*/
-#define USE_EVDEV    0
+#define USE_EVDEV    1
 #if USE_EVDEV
-#define EVDEV_NAME   "/dev/input/event0"
+#define EVDEV_NAME   "/dev/input/event1"
 #endif
 
 /*-------------------------------
