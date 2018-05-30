@@ -7,8 +7,6 @@
 # install:  Installs all non-3rd party targets.  Assumes "build" and "headers"
 #           have already been run.
 #
-# libconfig:  Build and install 3rd party library "libconfig".
-#
 # all:  Build all targets
 #
 
@@ -18,30 +16,42 @@ TOPDIR=.
 # Global defines for all Makefiles.  All Makefiles should include this
 include $(TOPDIR)/build-support/globals.mk
 
-SUBDIRS=littlevgl apps
+SUBDIRS=apps
+LIBDIRS=littlevgl
+
+all: headers libs build install
 
 build:
 	install -m 755 -d $(INSTALLROOT)/bin
 	install -m 755 -d $(INSTALLROOT)/include
 	install -m 755 -d $(INSTALLROOT)/lib
-	for DIR in $(SUBDIRS) ; do 			\
-		$(MAKE) -C $$DIR build TOPDIR=$(TOPDIR)/.. ;		\
+	for DIR in $(SUBDIRS) ; do 				\
+		$(MAKE) -C $$DIR build TOPDIR=$(TOPDIR)/.. ;	\
 	done
 
-all: libconfig headers build install
+libs:
+	for DIR in $(LIBDIRS) ; do 				\
+		$(MAKE) -C $$DIR build TOPDIR=$(TOPDIR)/.. ;	\
+	done
+	for DIR in $(LIBDIRS) ; do 				\
+		$(MAKE) -C $$DIR build TOPDIR=$(TOPDIR)/.. ;	\
+	done
+	for DIR in $(LIBDIRS) ; do 				\
+		$(MAKE) -C $$DIR install TOPDIR=$(TOPDIR)/.. ;	\
+	done
 
 install:
-	for DIR in $(SUBDIRS) ; do 			\
-		$(MAKE) -C $$DIR install TOPDIR=$(TOPDIR)/.. ;		\
+	for DIR in $(SUBDIRS) $(LIBDIRS); do 			\
+		$(MAKE) -C $$DIR install TOPDIR=$(TOPDIR)/.. ;	\
 	done
 
 headers:
-	for DIR in $(SUBDIRS) ; do	 			\
+	for DIR in $(SUBDIRS) $(LIBDIRS) ; do			\
 		$(MAKE) -C $$DIR headers TOPDIR=$(TOPDIR)/.. ;	\
 	done
 
 clean:
-	for DIR in $(SUBDIRS) ; do	 			\
+	for DIR in $(SUBDIRS) $(LIBDIRS) ; do 			\
 		$(MAKE) -C $$DIR clean TOPDIR=$(TOPDIR)/.. ;	\
 	done
 
