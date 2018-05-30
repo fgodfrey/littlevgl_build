@@ -1,0 +1,3 @@
+[submodule "littlevgl/lv_drivers"]
+	path = littlevgl/lv_drivers
+	url = https://github.com/fgodfrey/lv_drivers.git
