@@ -2,7 +2,7 @@ TOPDIR ?= ..
 
 include $(TOPDIR)/build-support/globals.mk
 
-SUBDIRS=test sysmon
+SUBDIRS=test sysmon tracker_console
 
 build:
 	for DIR in $(SUBDIRS) ; do 			\
