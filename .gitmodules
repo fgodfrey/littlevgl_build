@@ -1,6 +1,6 @@
 [submodule "littlevgl/lv_drivers"]
 	path = littlevgl/lv_drivers
-	url = ssh://git@github.com/fgodfrey/lv_drivers.git
+	url = ssh://git@gitlab.bigw.org:766/fgodfrey/lv_drivers.git
 [submodule "littlevgl/lvgl"]
 	path = littlevgl/lvgl
-	url = ssh://git@github.com/fgodfrey/lvgl.git
+	url = ssh://git@gitlab.bigw.org:766fgodfrey/lvgl.git
